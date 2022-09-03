@@ -3,7 +3,7 @@ const RENDER_EVENT = 'render-apps';
 
 const SAVED_EVENT = 'saved-todo';
 const STORAGE_KEY = 'BOOKSHELF_APPS';
-const inputBookIsComplete = document.querySelector('#inputBookIsComplete');
+
 
 function isStorageExist() {
   if (typeof (Storage) === undefined) {
@@ -15,6 +15,9 @@ function isStorageExist() {
 
 document.addEventListener('DOMContentLoaded', function () {
   const submitNewBook = document.getElementById('inputBook');
+  const inputBookIsComplete = document.querySelector('#inputBookIsComplete');
+  const searchBook = document.getElementById('searchBook');
+
   if (isStorageExist()) {
     loadDataFromStorage();
   }
@@ -28,10 +31,18 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   })
 
+  searchBook.addEventListener('submit', function (event) {
+    event.preventDefault();
+    searchTitleBook();
+  })
 
   submitNewBook.addEventListener('submit', function (event) {
     event.preventDefault();
     addDataBuku();
+    alert('Buku telah ditambahkan')
+    document.getElementById('inputBookTitle').value = ''
+    document.getElementById('inputBookAuthor').value = ''
+    document.getElementById('inputBookYear').value = ''
   });
 });
 
@@ -70,8 +81,7 @@ function addDataBuku() {
   const inputBookTitle = document.getElementById('inputBookTitle').value;
   const inputBookAuthor = document.getElementById('inputBookAuthor').value;
   const inputBookYear = document.getElementById('inputBookYear').value;
-
-  let isCompletedValue
+  let isCompletedValue;
 
   if (inputBookIsComplete.checked) {
     isCompletedValue = true
@@ -131,7 +141,10 @@ function makeTodo(todoObject) {
     deleteBuku.classList.add('red');
     deleteBuku.innerText = 'Hapus buku';
     deleteBuku.addEventListener('click', function () {
-      removeDataBuku(todoObject.id)
+      if (confirm(`Anda akan menghapus buku ${todoObject.title}?`) == true) {
+        removeDataBuku(todoObject.id)
+        alert(`Buku ${todoObject.title} telah dihapus`)
+      }
     })
 
     action.append(belumselesaiDibaca, deleteBuku)
@@ -148,7 +161,10 @@ function makeTodo(todoObject) {
     deleteBuku.classList.add('red');
     deleteBuku.innerText = 'Hapus buku';
     deleteBuku.addEventListener('click', function () {
-      removeDataBuku(todoObject.id)
+      if (confirm(`Anda akan menghapus buku ${todoObject.title}?`) == true) {
+        removeDataBuku(todoObject.id)
+        alert(`Buku ${todoObject.title} telah dihapus`)
+      }
     })
 
     action.append(selesaiDibaca, deleteBuku)
@@ -221,3 +237,20 @@ function removeDataBuku(todoId) {
   saveData();
 }
 // end hapus data buku
+
+
+// search title buku
+function searchTitleBook() {
+  const searchBookTitle = document.getElementById('searchBookTitle').value.toLowerCase()
+  let itemlist = document.querySelectorAll('.book_item');
+
+  itemlist.forEach((item) => {
+    const daftarCari = item.firstChild.textContent.toLowerCase();
+    if (daftarCari.indexOf(searchBookTitle) != -1) {
+      item.setAttribute('style', 'display: block;');
+    } else {
+      item.setAttribute('style', 'display: none !important;');
+
+    }
+  })
+}

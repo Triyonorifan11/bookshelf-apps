@@ -20,8 +20,9 @@ button {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: cornflowerblue;
+    background-color: rgb(37, 77, 150);
     color: white;
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.438);
 }
 
 main {
@@ -36,13 +37,13 @@ main {
     display: flex;
     flex-direction: column;
     padding: 16px;
-    border: 1px solid black;
+    border: 0.3px solid black;
     border-radius: 10px;
 }
 
 .input_section>h2 {
     text-align: center;
-    color: cornflowerblue;
+    color: rgb(37, 77, 150);
 }
 
 .input_section>form>.input {
@@ -50,7 +51,7 @@ main {
 }
 
 .input_section>form>button {
-    background-color: cornflowerblue;
+    background-color: rgb(37, 77, 150);
     color: white;
     border: 0;
     border-radius: 5px;
@@ -62,7 +63,7 @@ main {
 
 .search_section>form>button:hover,
 .input_section>form>button:hover {
-    background-color: rgb(82, 123, 197) !important;
+    background-color: rgb(31, 62, 121) !important;
 }
 
 .input_section>form>button>span {
@@ -74,11 +75,12 @@ main {
     width: 100%;
     padding: 8px;
     border-radius: 5px;
+    border: 0.2px solid black;
 }
 
 
 .input_section>form>.input>label {
-    color: cornflowerblue;
+    color: rgb(37, 77, 150);
     font-weight: bold;
 }
 
@@ -89,7 +91,7 @@ main {
 }
 
 .input_section>form>.input_inline>label {
-    color: cornflowerblue;
+    color: rgb(37, 77, 150);
     font-weight: bold;
     margin-right: 10px;
 }
@@ -100,19 +102,19 @@ main {
     flex-direction: column;
     align-items: center;
     padding: 16px;
-    border: 1px solid black;
+    border: 0.2px solid black;
     border-radius: 10px;
 }
 
 .search_section>h2 {
-    color: cornflowerblue;
+    color: rgb(37, 77, 150);
 }
 
 .search_section>form {
     padding: 16px;
     width: 100%;
     display: grid;
-    grid-template-columns: auto 1fr 0.5fr;
+    grid-template-columns: 1fr 0.3fr;
     grid-gap: 10px;
 }
 
@@ -124,10 +126,11 @@ main {
 .search_section>form>input {
     padding: 5px;
     border-radius: 5px;
+    border: 0.2px solid black;
 }
 
 .search_section>form>button {
-    background-color: cornflowerblue;
+    background-color: rgb(37, 77, 150);
     color: white;
     border: 0;
     border-radius: 5px;
@@ -136,13 +139,13 @@ main {
 
 .book_shelf {
     margin: 16px 0 0 0;
-    border: 1px solid black;
+    border: 0.5px solid black;
     padding: 16px;
     border-radius: 10px;
 }
 
 .book_shelf>h2 {
-    color: cornflowerblue;
+    color: rgb(37, 77, 150);
 }
 
 .book_shelf>.book_list {
@@ -151,7 +154,7 @@ main {
 
 .book_shelf>.book_list>.book_item {
     padding: 8px 16px 16px 16px;
-    border: 1px solid black;
+    border: 0.5px solid black;
     border-radius: 5px;
     margin: 10px 0;
 }
@@ -170,11 +173,11 @@ p {
 }
 
 .book_shelf>.book_list>.book_item>.action>.green {
-    background-color: darkgreen;
+    background-color: #198754;
     color: white;
 }
 
 .book_shelf>.book_list>.book_item>.action>.red {
-    background-color: darkred;
+    background-color: #dc3545;
     color: white;
 }
