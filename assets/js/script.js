@@ -112,7 +112,7 @@ function generateTodoObject(id, title, author, year, isCompleted) {
 }
 
 function makeTodo(todoObject) {
-  // const dataBuku = document.getElementById("incompleteBookshelfList");
+
   const titleDataObjek = document.createElement('h3');
   titleDataObjek.innerText = todoObject.title;
   const authorText = document.createElement('p');
@@ -137,17 +137,7 @@ function makeTodo(todoObject) {
       undoBukuFromSelesaiDibaca(todoObject.id)
     })
 
-    const deleteBuku = document.createElement('button');
-    deleteBuku.classList.add('red');
-    deleteBuku.innerText = 'Hapus buku';
-    deleteBuku.addEventListener('click', function () {
-      if (confirm(`Anda akan menghapus buku ${todoObject.title}?`) == true) {
-        removeDataBuku(todoObject.id)
-        alert(`Buku ${todoObject.title} telah dihapus`)
-      }
-    })
-
-    action.append(belumselesaiDibaca, deleteBuku)
+    action.append(belumselesaiDibaca)
   } else {
     const selesaiDibaca = document.createElement('button');
     selesaiDibaca.classList.add('green');
@@ -157,18 +147,19 @@ function makeTodo(todoObject) {
       addBookToSelesaiDibaca(todoObject.id)
     });
 
-    const deleteBuku = document.createElement('button');
-    deleteBuku.classList.add('red');
-    deleteBuku.innerText = 'Hapus buku';
-    deleteBuku.addEventListener('click', function () {
-      if (confirm(`Anda akan menghapus buku ${todoObject.title}?`) == true) {
-        removeDataBuku(todoObject.id)
-        alert(`Buku ${todoObject.title} telah dihapus`)
-      }
-    })
-
-    action.append(selesaiDibaca, deleteBuku)
+    action.append(selesaiDibaca)
   }
+
+  const deleteBuku = document.createElement('button');
+  deleteBuku.classList.add('red');
+  deleteBuku.innerText = 'Hapus buku';
+  deleteBuku.addEventListener('click', function () {
+    if (confirm(`Anda akan menghapus buku ${todoObject.title}?`) == true) {
+      removeDataBuku(todoObject.id)
+      alert(`Buku ${todoObject.title} telah dihapus`)
+    }
+  })
+  action.append(deleteBuku)
 
   return container;
 }
@@ -254,3 +245,4 @@ function searchTitleBook() {
     }
   })
 }
+// end search title buku
